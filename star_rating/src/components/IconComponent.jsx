@@ -1,4 +1,6 @@
 import React from "react";
+import { useRef } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 
 const IconComponent = ({ showIcon }) => {
@@ -32,6 +34,22 @@ const IconComponent = ({ showIcon }) => {
     });
   };
 
+  const containerRef = useRef();
+
+  useEffect(() => {
+    return () => {
+      containerRef.current.removeEventListener("click", containerRef.current);
+      containerRef.current.removeEventListener(
+        "mouseenter",
+        containerRef.current
+      );
+      containerRef.current.removeEventListener(
+        "mouseleave",
+        containerRef.current
+      );
+    };
+  }, []);
+
   const handleIconClick = (e) => {
     setFilled(e.target.dataset.id);
   };
@@ -46,6 +64,7 @@ const IconComponent = ({ showIcon }) => {
 
   return (
     <div
+      ref={containerRef}
       onClick={handleIconClick}
       onMouseEnter={handleMouseHover}
       onMouseLeave={handleMouseLeave}
