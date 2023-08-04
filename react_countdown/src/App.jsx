@@ -22,7 +22,7 @@ function App() {
 
   const timeHandler = () => {
     console.log(inputRef.current.value);
-    setTimeStamp(inputRef.current.valueAsNumber);
+    setTimeStamp(inputRef.current.valueAsNumber - Date.now());
     setDate("");
   };
 

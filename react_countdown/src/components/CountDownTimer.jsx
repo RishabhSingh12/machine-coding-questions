@@ -4,18 +4,16 @@ import { useEffect } from "react";
 const CountDownTimer = ({ time, setTime }) => {
   let timer = null;
 
+  let sec = 1000;
+  let mins = 60 * sec;
+  let hrs = 60 * mins;
+
   const displayTime = () => {
-    let sec;
-    let mins;
-    let hrs;
     if (time >= 1000) {
       let date = new Date(time);
-      sec = date.getSeconds();
-      mins = date.getMinutes();
-      hrs = date.getHours();
-
-      console.log(date);
-      console.log(date.getDay());
+      sec = Math.floor(time / 1000) % 60;
+      mins = Math.floor(time / (1000 * 60)) % 60;
+      hrs = Math.floor(time / (1000 * 3600));
 
       //   console.log("hrs:mins:secs", hrs, mins, sec);
       sec = sec.toString().length === 1 ? "0" + sec : sec;
