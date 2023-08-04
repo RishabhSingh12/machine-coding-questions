@@ -1,8 +1,12 @@
 import React from "react";
+import { useRef } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 
 const CountDownTimer = ({ time, setTime }) => {
-  let timer = null;
+  const [pause, setPause] = useState(false);
+
+  let timerRef = useRef(null);
 
   let sec = 1000;
   let mins = 60 * sec;
@@ -10,7 +14,7 @@ const CountDownTimer = ({ time, setTime }) => {
 
   const displayTime = () => {
     if (time >= 1000) {
-      let date = new Date(time);
+      // let date = new Date(time);
       sec = Math.floor(time / 1000) % 60;
       mins = Math.floor(time / (1000 * 60)) % 60;
       hrs = Math.floor(time / (1000 * 3600));
@@ -27,23 +31,33 @@ const CountDownTimer = ({ time, setTime }) => {
   };
 
   const handleStop = () => {
-    if (!timer) return;
-    clearInterval(timer);
-    timer = null;
+    if (!timerRef.current) return;
+    clearInterval(timerRef.current);
+    timerRef.current = null;
     setTime(0);
   };
 
   const handleStart = () => {
+    setPause(false);
     handleTime();
+  };
+
+  const handlePause = () => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+
+    setPause(true);
   };
 
   const handleTime = () => {
     if (time >= 1000) {
-      timer = setInterval(() => {
+      timerRef.current = setInterval(() => {
         setTime(time - 1000);
       }, 1000);
     } else {
-      clearInterval(timer);
+      clearInterval(timerRef.current);
       setTime(0);
     }
   };
@@ -52,14 +66,22 @@ const CountDownTimer = ({ time, setTime }) => {
     handleTime();
 
     return () => {
-      clearInterval(timer);
+      clearInterval(timerRef.current);
     };
   }, [time]);
 
   return (
     <div className="time">
       {displayTime()}
-      <button onClick={handleStop}>Reset</button>
+      <button disabled={time === 0} onClick={handleStop}>
+        Reset
+      </button>
+      <button
+        disabled={time === 0}
+        onClick={!pause ? handlePause : handleStart}
+      >
+        {!pause ? "Pause" : "Start"}
+      </button>
       {/* <button onClick={handleStart}>Start</button> */}
     </div>
   );
