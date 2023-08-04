@@ -34,7 +34,7 @@ const IconComponent = ({ showIcon }) => {
     });
   };
 
-  const containerRef = useRef();
+  const containerRef = useRef(null);
 
   useEffect(() => {
     return () => {
@@ -51,6 +51,7 @@ const IconComponent = ({ showIcon }) => {
   }, []);
 
   const handleIconClick = (e) => {
+    setHover(null);
     setFilled(e.target.dataset.id);
   };
 
@@ -70,7 +71,24 @@ const IconComponent = ({ showIcon }) => {
       onMouseLeave={handleMouseLeave}
       className="display-container"
     >
-      {filledArray().map((ele, idx) => ele)}
+      {/* {filledArray().map((ele, idx) => ele)} */}
+
+      {...iconArr.map((ele, idx) => {
+        return (
+          <span
+            key={idx}
+            data-id={`${idx}`}
+            className={`${
+              (idx <= hover && hover !== null) ||
+              (idx <= filled && filled !== null)
+                ? "on"
+                : "off"
+            } icon`}
+          >
+            &#9733;
+          </span>
+        );
+      })}
     </div>
   );
 };

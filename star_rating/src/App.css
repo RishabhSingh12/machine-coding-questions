@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: darkred;
 }
 
 .icon-input {
@@ -23,12 +24,30 @@ button {
   padding: 5px;
   border-radius: 5px;
   outline: none;
-  border: 2px solid yellow;
+  border: 2px solid black;
+}
+
+.display-container {
+  display: flex;
+  justify-content: center;
+  background: blue;
+  line-height: 0;
+}
+
+.on {
+  color: gold;
+}
+
+.off {
+  color: white;
 }
 
 .icon {
-  padding: 0px 5px;
+  margin: 0px 5px;
   cursor: pointer;
-  font-size: 1.5rem;
-  /* color: yellow; */
+  font-size: 2rem;
 }
+
+/* .icon:hover {
+  color: black;
+} */

@@ -28,8 +28,8 @@ function App() {
             placeholder="Enter icon code"
           />
           <button onClick={showIconHandler}>Show</button>
-          <IconComponent showIcon={showIcon} />
         </div>
+        <IconComponent showIcon={showIcon} />
       </div>
     </>
   );
