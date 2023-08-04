@@ -67,8 +67,6 @@ const IconComponent = ({ showIcon }) => {
     <div
       ref={containerRef}
       onClick={handleIconClick}
-      onMouseEnter={handleMouseHover}
-      onMouseLeave={handleMouseLeave}
       className="display-container"
     >
       {/* {filledArray().map((ele, idx) => ele)} */}
@@ -76,6 +74,8 @@ const IconComponent = ({ showIcon }) => {
       {...iconArr.map((ele, idx) => {
         return (
           <span
+            onMouseEnter={handleMouseHover}
+            onMouseLeave={handleMouseLeave}
             key={idx}
             data-id={`${idx}`}
             className={`${

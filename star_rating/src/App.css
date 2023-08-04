@@ -30,8 +30,10 @@ button {
 .display-container {
   display: flex;
   justify-content: center;
-  background: blue;
-  line-height: 0;
+  background: darkgreen;
+  /* line-height: 0; */
+  letter-spacing: 0px;
+  padding: 0;
 }
 
 .on {
