@@ -38,15 +38,22 @@
   padding: 5px 10px;
 }
 
-.reply {
+.reply,
+.edit,
+.delete {
   cursor: pointer;
   color: blue;
   padding: 4px 4px 8px 18px;
 }
 
+.edit-reply-container {
+  padding: 4px 2px 8px 4px;
+}
+
 /* input styling */
 .input {
-  padding: 4px;
+  padding: 8px;
+  margin-right: 4px;
   border-radius: 10px;
 }
 
