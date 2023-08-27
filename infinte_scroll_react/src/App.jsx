@@ -4,12 +4,17 @@ import { useState } from "react";
 
 import "./App.css";
 
+let timer;
+
 function App() {
   const [query, setQuery] = useState("");
   const [response, setResponse] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
+
+  //ref for timer
+  // const timer = useRef(null);
 
   //ref for observer
   const observer = useRef();
@@ -31,7 +36,17 @@ function App() {
   };
 
   const searchHandler = (e) => {
+    // if (timer) {
+    //   clearTimeout(timer);
+    // }
+
     setQuery(e.target.value);
+    setPage(1);
+
+    // timer = setTimeout(() => {
+    //   setQuery(e.target.value);
+    //   setPage(1);
+    // }, 1000);
   };
 
   //for calling api
@@ -44,7 +59,6 @@ function App() {
       const resultData = await res.json();
 
       setLoading(false);
-      console.log(resultData);
 
       //checking whether the response has more data to provide
       setHasMore(resultData.docs.length > 0);
