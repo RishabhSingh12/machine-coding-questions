@@ -19,3 +19,8 @@ body {
   border-radius: 8px;
   outline: none;
 }
+
+.title {
+  /* margin-left: 30%; */
+  text-align: start;
+}
