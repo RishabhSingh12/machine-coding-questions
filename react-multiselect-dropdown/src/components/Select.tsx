@@ -12,5 +12,9 @@ type SelectProps = {
 };
 
 export function Select({ value, onChange, options }: SelectProps) {
-  return <div className={styles.container}>{value}</div>;
+  return (
+    <div className={styles.container}>
+      <span className={styles.value}>Value</span>
+    </div>
+  );
 }

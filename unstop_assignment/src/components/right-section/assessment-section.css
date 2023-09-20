@@ -1,0 +1,29 @@
+.assessment-section-container {
+  display: flex;
+  gap: 30px;
+}
+
+.new-assessment {
+  border: 1px solid var(--system-divider);
+  font-size: 16px;
+  border-radius: 8px;
+  width: 33%;
+  padding: 30px;
+  text-align: center;
+  background: #f6f8fa;
+}
+
+.new-assessment-title {
+  margin-top: 10px;
+}
+
+.new-assessment-text,
+.new-assessment-title {
+  font-weight: 500;
+  color: var(--text-100);
+}
+
+.new-assessment-text {
+  margin-top: 12px;
+  font-size: 12px;
+}

@@ -1,0 +1,121 @@
+/* common color variables */
+:root {
+  --text-blue-primary: #0073e6;
+  --text-100: #1c4980;
+  --bg-white: #ffffff;
+  --system-divider: #dde5ea;
+}
+
+.main-container {
+  display: flex;
+  gap: 16px;
+}
+
+/* left-section styles ---------------------------- */
+.side-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  padding-left: 30px;
+  padding-right: 20px;
+  padding-top: 16px;
+  background: var(--bg-white);
+}
+
+.side-menu-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+.side-menu-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  color: var(--text-100);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16.8px;
+}
+
+.selected-option {
+  border: 1px solid var(--text-blue-primary);
+  border-radius: 8px;
+  color: var(--text-blue-primary);
+  background: #e5f1fc;
+}
+
+.side-icon-container {
+  width: 20px;
+  height: 20px;
+}
+
+/* right section styles -------------------------------------- */
+
+/* right-section-header */
+.right-section-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.header-section {
+  display: flex;
+  align-items: center;
+  background: var(--bg-white);
+  padding: 21px 20px;
+  gap: 20px;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.separator {
+  height: 46px;
+  border-right: 1px solid #dadce0;
+}
+
+.header-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-blue-primary);
+}
+
+.header-text:first-of-type {
+  font-size: 20px;
+  color: var(--text-100);
+  line-height: 24px;
+}
+
+.divider {
+  color: var(--system-divider);
+  height: 1px;
+  width: 100%;
+}
+
+/* right-section-body */
+.right-section-body {
+  background: var(--bg-white);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.body-first-header,
+.body-second-header {
+  color: var(--text-100);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 25.2px;
+}
+
+.body-second-header {
+  margin-top: 23px;
+}
