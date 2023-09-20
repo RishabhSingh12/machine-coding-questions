@@ -1,8 +1,12 @@
-import { useState } from "react";
 import "./App.css";
+import { Select } from "./components/Select";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <Select />
+    </>
+  );
 }
 
 export default App;
