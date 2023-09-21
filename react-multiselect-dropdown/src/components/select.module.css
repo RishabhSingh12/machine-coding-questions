@@ -18,6 +18,9 @@
 
 .value {
   flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
 }
 
 .clear-btn {
@@ -60,6 +63,8 @@
   top: calc(100% + 0.25em);
   border: 0.05em solid #777;
   border-radius: 0.25em;
+  z-index: 2;
+  background: #fff;
 }
 
 .options.show {
@@ -78,4 +83,28 @@
 .option.highlighted {
   background: hsl(200, 100%, 50%);
   color: #fff;
+}
+
+/* buttons */
+.option-badge {
+  background: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 0.05em solid #777;
+  border-radius: 0.25em;
+  padding: 0.15em 0.25em;
+  gap: 0.25em;
+}
+
+.option-badge:hover,
+.option-badge:focus {
+  background-color: hsl(0, 100%, 90%);
+  border-color: hsl(0, 100%, 50%);
+}
+
+.option-badge:hover > .remove-btn,
+.option-badge:focus > .remove-btn {
+  color: hsl(0, 100%, 50%);
 }
