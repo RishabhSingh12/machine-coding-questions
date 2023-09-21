@@ -9,6 +9,7 @@
   padding: 0.5em;
   border-radius: 0.25em;
   outline: none;
+  cursor: pointer;
 }
 
 .container:focus {
@@ -68,4 +69,13 @@
 .option {
   padding: 0.25em;
   cursor: pointer;
+}
+
+.option.highlighted {
+  background: hsl(200, 100%, 50%);
+  color: #fff;
+}
+
+.option.selected {
+  background: hsl(200, 100%, 70%);
 }
