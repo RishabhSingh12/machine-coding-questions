@@ -1,5 +1,5 @@
 import styles from "./select.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export type SelectOption = {
   value: string | number;
@@ -27,6 +27,9 @@ type SelectProps = {
 export function Select({ multiple, value, onChange, options }: SelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(0);
+
+  //ref for accessibility
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const openOptionHandler = () => {
     setIsOpen((prev) => !prev);
@@ -66,6 +69,28 @@ export function Select({ multiple, value, onChange, options }: SelectProps) {
   useEffect(() => {
     if (isOpen) setHighlightedIndex(0);
   }, [isOpen]);
+
+  //useEffect for different accessibilty options
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.target !== containerRef.current) return;
+      console.log(e.code);
+
+      switch (e.code) {
+        case "Enter":
+        case "Space":
+          setIsOpen((prev) => !prev);
+
+          // if (isOpen) selectOption(options[highlightedIndex]);
+          break;
+      }
+    };
+    containerRef.current?.addEventListener("keydown", handler);
+
+    return () => {
+      containerRef.current?.removeEventListener("keydown", handler);
+    };
+  }, [isOpen, options, highlightedIndex]);
 
   return (
     <div
