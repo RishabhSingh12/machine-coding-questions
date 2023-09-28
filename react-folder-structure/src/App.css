@@ -4,7 +4,8 @@
   display: flex;
   justify-content: space-between;
   padding: 3px;
-  width: 300px;
+
+  width: 28rem;
   cursor: pointer;
 }
 
@@ -19,8 +20,26 @@
   flex-direction: column;
 }
 
+.edit_input {
+  margin-left: 3px;
+  width: 30%;
+  word-wrap: break-word;
+  background: transparent;
+}
+
+.modifier-container > button {
+  text-align: center;
+  padding: 1px 4px;
+  margin-right: 3px;
+}
+
+.btn-container {
+  display: flex;
+  gap: 5px;
+}
+
 .btn-container > button {
-  padding: 1px 5px;
+  padding: 1px 5px 1px 3px;
   background: #fff;
   border: 1px solid #000;
 }
