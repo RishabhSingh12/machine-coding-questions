@@ -57,16 +57,16 @@ const Folder = ({
   };
 
   //deleting the file or folder
-  const onDeleteItem = (e) => {
+  const onDeleteItem = (e, itemId) => {
     e.stopPropagation();
-    handleDeleteNode();
+    handleDeleteNode(itemId);
   };
 
   //editing the name of the file or folder
   const editNameHandler = (e) => {
     e.stopPropagation();
     if (edit) {
-      //   if (editvalue.length === 0) return;
+      if (editvalue.length === 0) return;
       handleEditNode(explorer.id, editvalue, explorer.isFolder);
     }
     if (edit) setEdit(false);
@@ -80,7 +80,7 @@ const Folder = ({
     return (
       <div style={{ marginTop: 5, marginLeft: 5 }}>
         <div className="folder" onClick={() => setExpand(!expand)}>
-          <span>
+          <span className="name-container">
             📁
             {edit ? (
               <input
@@ -106,7 +106,9 @@ const Folder = ({
                       ✏️
                     </button>
 
-                    <button onClick={onDeleteItem}>🗑️</button>
+                    <button onClick={(e) => onDeleteItem(e, explorer.id)}>
+                      🗑️
+                    </button>
                   </>
                 ) : (
                   <>
@@ -151,6 +153,7 @@ const Folder = ({
               <Folder
                 handleInsertNode={handleInsertNode}
                 handleEditNode={handleEditNode}
+                handleDeleteNode={handleDeleteNode}
                 explorer={exp}
                 key={exp.id}
               />
@@ -160,7 +163,46 @@ const Folder = ({
       </div>
     );
   } else {
-    return <span className="file">📄{explorer.name}</span>;
+    return (
+      <div className="folder">
+        <span className="file">
+          📄
+          {edit ? (
+            <input
+              ref={inputRef}
+              required={true}
+              autoFocus
+              onChange={editchangeHandler}
+              className="edit_input"
+              value={editvalue}
+            />
+          ) : (
+            explorer.name
+          )}
+        </span>
+        <div className="modifier-container">
+          {explorer.name !== "root" &&
+            (!edit ? (
+              <>
+                <button onClick={(e) => handleModifier(e, "edit", true)}>
+                  ✏️
+                </button>
+
+                <button onClick={(e) => onDeleteItem(e, explorer.id)}>
+                  🗑️
+                </button>
+              </>
+            ) : (
+              <>
+                <button onClick={editNameHandler}>Save</button>
+                <button onClick={(e) => handleModifier(e, "cancel", false)}>
+                  Cancel
+                </button>
+              </>
+            ))}
+        </div>
+      </div>
+    );
   }
 };
 

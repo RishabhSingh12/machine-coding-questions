@@ -3,6 +3,7 @@
   background-color: rgb(233, 233, 233);
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   padding: 3px;
 
   width: 28rem;
@@ -23,6 +24,7 @@
 .edit_input {
   margin-left: 3px;
   width: 30%;
+  /* word-break: break-all; */
   word-wrap: break-word;
   background: transparent;
 }
@@ -47,4 +49,12 @@
 .btn-container > button:hover,
 .btn-coontainer > button:active {
   background: #e5e2e2;
+}
+
+.name-container {
+  display: flex;
+  width: 200px;
+  word-wrap: break-word;
+  flex-wrap: wrap;
+  overflow: scroll;
 }

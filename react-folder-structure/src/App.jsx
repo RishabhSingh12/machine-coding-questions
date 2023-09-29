@@ -21,7 +21,7 @@ function App() {
 
   const handleDeleteNode = (itemId) => {
     const finalstructure = deleteNode(explorerData, itemId);
-    setExplorerData(finalstructure);
+    setExplorerData({ ...finalstructure });
   };
 
   return (
