@@ -1,27 +1,30 @@
-let data = [
-  {
-    name: "furniture",
-    items: [
-      { name: "Tables & Chairs" },
-      {
-        name: "Sofas",
-        items: [
-          { name: "Bean Bag" },
-          { name: "Arm Chair" },
-          { name: "Modular" },
-        ],
-      },
-      { name: "Occassional" },
-    ],
-  },
-  {
-    name: "Decor",
-    items: [
-      { name: "Bed Linen" },
-      { name: "Curtains & Blinds" },
-      { name: "Carpets" },
-    ],
-  },
-];
+import { data } from "./data.js";
 
-//render function
+const listContainer = document.getElementById("listContainer");
+
+//for rendering nested lists
+function renderList(htmlStr, list) {
+  list.forEach((item) => {
+    htmlStr += `<li>${item.name}</li>`;
+
+    //if list contains more items
+    if (item.items) {
+      htmlStr += `<ul>${renderList(htmlStr, item.items)}</ul>`;
+    }
+  });
+
+  return htmlStr;
+}
+
+// for rendering the final data
+const renderData = (data) => {
+  const finalHtml = `<ul>${renderList("", data)}</ul>`;
+  // listContainer.insertAdjacentHTML("afterbegin", finalHtml);
+  listContainer.innerHTML = finalHtml;
+};
+
+//for searching the nested lists
+const searchNestedList = (list, keyword) => {};
+
+//calling the render function
+renderData(data);
