@@ -28,4 +28,59 @@ body {
 .form {
   display: grid;
   grid-template-columns: auto auto;
+  row-gap: 1rem;
+  column-gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  text-align: center;
+}
+
+/* making label font weight to be bold */
+label {
+  font-weight: bold;
+}
+
+/* aligning the range slider and the number input */
+.character-amount-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.number-input {
+  width: 3rem;
+}
+
+.password-display {
+  background-color: white;
+  color: black;
+  padding: 1rem;
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  height: 1rem;
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: break-all;
+}
+
+.btn {
+  grid-column: span 2;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #ffffff33;
 }
