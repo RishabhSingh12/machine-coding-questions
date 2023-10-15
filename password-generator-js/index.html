@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Generator</title>
     <link rel="stylesheet" href="style.css">
+    <script src="./index.js" defer></script>
 </head>
 
 <body>
     <main class="container">
         <h1 class="title">Password Generator</h1>
         <h3 class="password-display">Password</h3>
-        <form class="form">
+        <form id="passwordGeneratorForm" class="form">
             <label for="characterAmountNumber">Number of Characters</label>
             <div class="character-amount-container">
                 <input type="range" min="1" max="50" id="characterAmountRange" value="10" />
