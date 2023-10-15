@@ -6,6 +6,17 @@ const includeUpperCaseElement = document.getElementById("includeUpperCase");
 const includeNumbersElement = document.getElementById("includeNumbers");
 const includeSymbolsElement = document.getElementById("includeSymbols");
 
+//getting char codes
+const LOWER_CASE_CODES = arrayFromLowToHigh(65, 90);
+const UPPER_CASE_CODES = arrayFromLowToHigh(97, 122);
+const NUMBER_CHAR_CODES = arrayFromLowToHigh(48, 57);
+
+//for symbol char codes
+const SYMBOL_CHAR_CODES = arrayFromLowToHigh(33, 47)
+  .concat(arrayFromLowToHigh(58, 64))
+  .concat(arrayFromLowToHigh(91, 96))
+  .concat(arrayFromLowToHigh(123, 126));
+
 characterAmountNumber.addEventListener("input", syncCharacterAmount);
 characterAmountRange.addEventListener("input", syncCharacterAmount);
 
@@ -20,6 +31,7 @@ const form = document.getElementById("passwordGeneratorForm");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  console.log(LOWER_CASE_CODES);
   //getting the user selected length for the password
   const characterAmount = characterAmountNumber.value;
 
@@ -43,3 +55,12 @@ function generatePassword(
   includeNumbers,
   includeSymbols
 ) {}
+
+//function for generating arrays from ascii codes
+function arrayFromLowToHigh(low, high) {
+  const array = [];
+  for (let i = low; i < high; i++) {
+    array.push(i);
+  }
+  return array;
+}
